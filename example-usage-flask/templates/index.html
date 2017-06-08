@@ -1,0 +1,103 @@
+<html>
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/panel.css') }}">
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <!-- Quill -->
+  <link rel="stylesheet" href="//cdn.quilljs.com/1.2.4/quill.bubble.css">
+  <script src="//cdn.quilljs.com/1.2.4/quill.js"></script>
+
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="logo">Wordsmiths OT Demo</h1>
+      </div>
+    </div>
+
+    <div class="row operations">
+      <div class="col-md-6">
+        <label>Operation 1</label>
+        <br />
+          <select class="op1">
+            <option value="insert-one">Insert</option>
+            <option value="delete-one">Delete</option>
+          </select>
+          <br /><br />
+          <div class="insert1">
+            <input class="string-index-1" type="text" placeholder="Index" />
+            <input class="string-1" type="text" placeholder="String" />
+          </div>
+          <div class="delete1">
+            <input class="delete-index-1" type="text" placeholder="Index" />
+            <input class="range-1" type="text" placeholder="Range" />
+          </div>
+      </div>
+
+      <div class="col-md-6">
+        <label>Operation 2</label>
+        <br />
+        <select class="op2">
+          <option value="insert-two">Insert</option>
+          <option value="delete-two">Delete</option>
+        </select>
+        <br /><br />
+        <div class="insert2">
+          <input class="string-index-2" type="text" placeholder="Index" />
+          <input class="string-2" type="text" placeholder="String" />
+        </div>
+        <div class="delete2">
+          <input class="delete-index-2" type="text" placeholder="Index" />
+          <input class="range-2" type="text" placeholder="Range" />
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <button class="transform-button center-block btn btn-primary">Transform!</button>
+      </div>
+    </div>
+
+    <br />
+    <div class="row">
+      <div class="col-md-6">
+        <h5>Log</h5>
+        <div class="log1">
+
+
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h5>Log</h5>
+        <div class="log2">
+
+        </div>
+      </div>
+
+      <div class="hidden">
+        <div class="col-md-6">
+          <h5>Document</h5>
+          <div id="repo1">
+            ABCDEFG
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h5>Document</h5>
+          <div id="repo2">
+            ABCDEFG
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="{{ url_for('static', filename='js/socket-conn.js') }}"></script>
+<script src="{{ url_for('static', filename='js/config.js') }}"></script>
+</html>

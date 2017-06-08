@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+body {
+  text-align: center;
+}
+
+.operations {
+  height: 80px;
+}
+
+.delete1, .delete2, .insert1, .insert2 {
+  display: none;
+  visibility: none;
+}
+
+.log {
+  font-family: 'Roboto Mono', monospace;
+}
+
+.hidden {
+  display: hidden;
+}
