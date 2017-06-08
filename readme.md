@@ -4,6 +4,8 @@ Wordsmiths is an open-source repository built for one purpose; understanding and
 All information presented is from the personal understanding and supporting documents.
 Feel free to make a pull request if there is anything I've misinterpreted.
 
+
+## Install
 ```
 pip install wordsmiths
 ```
@@ -20,7 +22,6 @@ pip install wordsmiths
 4. [Transformations](#transformations)
 5. [Compression Algorithms](#compression_algorithms)
 6. [Transformation Functions](#transformation_functions)
-7. [Control Functions](#control_functions)
 8. [Sockets](#sockets)
 
 -----
@@ -98,37 +99,10 @@ This essentially states that when the transform is given two operations, a and b
 
 As opposed to storing *every* single operation (eg, typing a character) received by *every* user in *every* document - we can save valuable storage by compressing operations together before sending them for processing. This assumes an OT model which makes clients wait for server acknowledgement before sending more operations. During this state of waiting for acknowledgement, the client compresses the character-wise operations into strings where applicable. This is cost-efficient as the only thing the server has to do for each user is receive, apply, potentially transform and send operations and the client does the supposed "lifting" when it performs compression (which in itself is a relatively cheap operation).
 
-The algorithm proposed for this Pythonic Implementation is as follows, taking one argument which is a list of operations; 
-
 -----
 ## Transformation Functions
-### String-Wise Inclusion Transformation
-### Character-Wise Inclusion Transformation
-This is the proposed assign system, which looks at the two operations given and *assigns* the operations to a sub-function which performs the actual transformation. It is worth noting that these functions are purposely overly-verbose for readability. 
+See transform.py for code-commented transformation functions.
 
-```python
-def transform(op1, op2):
-    transform_type = []
-    if "insert" in op1:
-        transform_type.append('Ins')
-    elif "delete" in op1:
-        transform_type.append('Del')
-    if "insert" in op2:
-        transform_type.append('Ins')
-    elif "delete" in op2:
-        transform_type.append('Del')
-    if transform_type[0] == "Ins" and transform_type[1] == "Ins":
-            transformed_ops = insert_insert(op1, op2)
-    if transform_type[0] == "Del" and transform_type[1] == "Del":
-            delete_delete(op1, op2)
-    if transform_type[0] == "Ins" and transform_type[1] == "Del":
-            insert_delete(op1, op2)
-    if transform_type[0] == "Del" and transform_type[1] == "Ins":
-            delete_insert(op1, op2)
-    return transformed_ops[0], transformed_ops[1]
-```
------
-## Control Functions
 -----
 ## Sockets 
 Sockets is the desirable web protocol for an OT system, since there is an almost constant communication between a client and server, using long-polling ajax requests becomes cumbersome and inefficient extremely quick. Sockets eliminates the need for continous requests, and just opens the connection between the server and client - also enabling an example where multiple clients are connected to one document. 
