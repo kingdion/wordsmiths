@@ -1,3 +1,5 @@
+![alt text](http://i.imgur.com/7Bqchm2.png "Wordsmiths")
+
 # Wordsmiths
 Wordsmiths is an open-source repository built for one purpose; understanding and applying operational transformation using Python and Flask.
 
