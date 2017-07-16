@@ -9,7 +9,7 @@ Feel free to make a pull request if there is anything I've misinterpreted.
 
 ## Install
 ```
-pip install wordsmiths
+pip3 install wordsmiths
 ```
 
 
@@ -43,10 +43,10 @@ The goal of this document is to extensively document the system and implement it
 
 ```python
 # standard import 
-from wordsmiths import OT_Char, OT_String
+import wordsmiths
 
 # instantiate to variable
-OT = OT_String()
+OT = wordsmiths.OT_String()
 
 # call transform method
 OT.transform(op1, op2) 
