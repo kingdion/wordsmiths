@@ -1,7 +1,7 @@
 # !/usr/bin/python
 '''
 Operational Transformation
-Built by Dion Misic for Wordsmiths using Python 2.7
+Built by Dion Misic for Wordsmiths using Python 3.6
 
 Given two operations from QuillJS give two transformed functions back.
 Functions are split multipletimes for readability.
@@ -22,9 +22,6 @@ OTC = OT_Char()
 
 2. Pass in operations into transform function
 new_ops = OTC.transform(op1, op2)
-
-
- *** EXAMPLE USAGE AT END OF DOC ***
 '''
 
 ''' OT_Char Character-Wise Function '''
@@ -72,9 +69,9 @@ class OT_Char():
 
         if self.verbose:
             print('---')
-            print 'CONVERSIONS'
-            print 'OP1:', op1, '--> OP1-Converted:', new_op_1
-            print 'OP2:', op2, '--> OP2-Converted:', new_op_2
+            print('CONVERSIONS')
+            print('OP1:', op1, '--> OP1-Converted:', new_op_1)
+            print('OP2:', op2, '--> OP2-Converted:', new_op_2)
             print('---')
         return new_op_1, new_op_2
 
@@ -83,6 +80,7 @@ class OT_Char():
          assigns the operations to the appropriate transform '''
 
         # Use conversion function
+        # Potentially remove this function in future versions to simplify.
         op1, op2 = self.convert_for_transform(op1, op2)
 
         # Throw the operations into sub functions
@@ -97,8 +95,8 @@ class OT_Char():
             transform_type.append('Del')
 
         if self.verbose:
-            print 'TRANSFORM-TYPE'
-            print transform_type
+            print('TRANSFORM-TYPE')
+            print(transform_type)
 
         # Send to sub-function depending on relationship
         if transform_type[0] == "Ins" and transform_type[1] == "Ins":
@@ -112,9 +110,9 @@ class OT_Char():
 
         if self.verbose:
             print('---')
-            print 'TRANSFOMRED OPS'
-            print 'OP1-PRIME:', transformed_ops[0]
-            print 'OP2-PRIME:', transformed_ops[1]
+            print('TRANSFOMRED OPS')
+            print('OP1-PRIME:', transformed_ops[0])
+            print('OP2-PRIME:', transformed_ops[1])
             print('---')
             print("-----> END TRANSFORM TRANSMISSION <-----")
 
@@ -223,6 +221,7 @@ class OT_String():
          assigns the operations to the appropriate transform '''
 
         # Use conversion function
+        # Potentially remove this function in future versions to simplify.
         op1, op2 = self.convert_for_transform(op1, op2)
 
         # Throw the operations into sub functions
@@ -237,8 +236,8 @@ class OT_String():
             transform_type.append('Del')
 
         if self.verbose:
-            print 'TRANSFORM-TYPE'
-            print transform_type
+            print('TRANSFORM-TYPE')
+            print(transform_type)
 
         # Create unique 'copies' of the operations
         # Prevents variables from overriding eachother
@@ -261,15 +260,15 @@ class OT_String():
 
         if self.verbose:
             print('---')
-            print 'TRANSFOMRED OPS'
-            print 'OP1', oop1
-            print 'OP2', oop2
-            print 'OP1-PRIME:', transformed_ops[0]
-            print 'OP2-PRIME:', transformed_ops[1]
+            print('TRANSFOMRED OPS')
+            print('OP1', oop1)
+            print('OP2', oop2)
+            print('OP1-PRIME:', transformed_ops[0])
+            print('OP2-PRIME:', transformed_ops[1])
             # Try check for segments. Only applicable to delete_insert operation
             try:
                 if transformed_ops[0][1] != "" or transformed_ops[1][1] != "":
-                    print 'FINAL-SEGMENT', transformed_ops[0][1]
+                    print('FINAL-SEGMENT', transformed_ops[0][1])
             except:
                 pass
             print("-----> END TRANSFORM TRANSMISSION <-----")
@@ -283,7 +282,7 @@ class OT_String():
         if op1['index'] < op2['index']:
             op1_prime = op1
         else:
-            op1['index'] = op1['index'] + (len(op2['insert']) - 1)
+            op1['index'] = op1['index'] + (len(op2['insert']))
             op1_prime = op1
 
         return op1_prime
