@@ -1,15 +1,15 @@
 ![alt text](http://i.imgur.com/7Bqchm2.png "Wordsmiths")
 
 # Wordsmiths
-Wordsmiths is an open-source repository built for one purpose; understanding and applying operational transformation using Python and Flask.
+Wordsmiths is an open-source repository built for one purpose; understanding and applying operational transformation using Python.
 
 All information presented is from the personal understanding and supporting documents.
-Feel free to make a pull request if there is anything I've misinterpreted.
+Feel free to make a pull request if there is anything I've misinterpreted - contributing to the project in any way is encouraged.
 
 
 ## Install
 ```
-pip3 install wordsmiths
+pip install wordsmiths
 ```
 
 
@@ -39,17 +39,17 @@ The goal of this document is to extensively document the system and implement it
 -----
 
 ## Usage
-#### See transform.py comments for more example usage.
+#### See wordsmiths/ot.py comments for more example usage.
 
 ```python
-# standard import 
+# standard import
 import wordsmiths
 
 # instantiate to variable
 OT = wordsmiths.OT_String()
 
 # call transform method
-OT.transform(op1, op2) 
+OT.transform(op1, op2)
 ```
 
 -----
@@ -92,9 +92,7 @@ Google defines this transformation process with the mathematical identity;
 
 This essentially states that when the transform is given two operations, a and b respectively, it will derive two new operations known as a’ and b’. Effectively, these two derivatives can then be applied to both users to achieve a synchronised, equal state. This mathematical identity is illustrated in a state diagram in Figure 3, showing how the derivatives from transform can be used to achieve the same state.
 
--- > to be continued 
-
------ 
+-----
 
 ## Compression Algorithms
 #### Warning! Compression is only applicable to string-wise transformation functions. This will not work if you are using character-wise transformation algorithms.
@@ -103,13 +101,11 @@ As opposed to storing *every* single operation (eg, typing a character) received
 
 -----
 ## Transformation Functions
-See transform.py for code-commented transformation functions.
+See wordsmiths/ot.py for code-commented transformation functions.
+[![Wordsmiths PyCon](https://www.youtube.com/watch?v=RO59n7rag2U&t=707s "Wordsmiths PyCon")
 
 -----
-## Sockets 
-Sockets is the desirable web protocol for an OT system, since there is an almost constant communication between a client and server, using long-polling ajax requests becomes cumbersome and inefficient extremely quick. Sockets eliminates the need for continous requests, and just opens the connection between the server and client - also enabling an example where multiple clients are connected to one document. 
+## Sockets
+Sockets is the desirable web protocol for an OT system, since there is an almost constant communication between a client and server, using long-polling ajax requests becomes cumbersome and inefficient extremely quick. Sockets eliminates the need for continous requests, and just opens the connection between the server and client - also enabling an example where multiple clients are connected to one document. Using the WebSocket protocol reduces potential overhead since information is constantly being sent between client and server - as the only overhead is sent in the initial handshake - operations afterward become a lot smaller.
 
-In the example of this implementation, Flask-SocketIO(link) is used to satisfy socket requirements on the python server-side and the SocketIO javascript implementation is used to connect to the client over ws://. 
-
-
-## Further Reading
+In the example of this implementation, Flask-SocketIO(link) is used to satisfy socket requirements on the python server-side and the SocketIO javascript implementation is used to connect to the client over ws://.
