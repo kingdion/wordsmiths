@@ -102,7 +102,7 @@ As opposed to storing *every* single operation (eg, typing a character) received
 -----
 ## Transformation Functions
 See wordsmiths/ot.py for code-commented transformation functions.
-[![Wordsmiths PyCon](https://www.youtube.com/watch?v=RO59n7rag2U&t=707s "Wordsmiths PyCon")
+[Wordsmiths @ PyCon](https://www.youtube.com/watch?v=RO59n7rag2U&t=707s)
 
 -----
 ## Sockets
