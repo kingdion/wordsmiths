@@ -7,7 +7,7 @@ All information presented is from the personal understanding and supporting docu
 Feel free to make a pull request if there is anything I've misinterpreted - contributing to the project in any way is encouraged.
 
 
-## Install
+## Install (Python 3.6)
 ```
 pip install wordsmiths
 ```
@@ -92,6 +92,8 @@ Google defines this transformation process with the mathematical identity;
 
 This essentially states that when the transform is given two operations, a and b respectively, it will derive two new operations known as a’ and b’. Effectively, these two derivatives can then be applied to both users to achieve a synchronised, equal state. This mathematical identity is illustrated in a state diagram in Figure 3, showing how the derivatives from transform can be used to achieve the same state.
 
+// TODO: Extend and make more comprehensive.
+
 -----
 
 ## Compression Algorithms
@@ -99,13 +101,24 @@ This essentially states that when the transform is given two operations, a and b
 
 As opposed to storing *every* single operation (eg, typing a character) received by *every* user in *every* document - we can save valuable storage by compressing operations together before sending them for processing. This assumes an OT model which makes clients wait for server acknowledgement before sending more operations. During this state of waiting for acknowledgement, the client compresses the character-wise operations into strings where applicable. This is cost-efficient as the only thing the server has to do for each user is receive, apply, potentially transform and send operations and the client does the supposed "lifting" when it performs compression (which in itself is a relatively cheap operation).
 
+// TODO: Extend and create functions
 -----
 ## Transformation Functions
 See wordsmiths/ot.py for code-commented transformation functions.
 [Wordsmiths @ PyCon](https://www.youtube.com/watch?v=RO59n7rag2U&t=707s)
 
+// TODO: Users who insert an operation at the same time don't resolve conflicts, the fix is to make both operations agree on which one to insert first (order matters) so that they don't insert at different times.
+
+// TODO: Build a client/server which can perform operational transformation today
+
 -----
 ## Sockets
-Sockets is the desirable web protocol for an OT system, since there is an almost constant communication between a client and server, using long-polling ajax requests becomes cumbersome and inefficient extremely quick. Sockets eliminates the need for continous requests, and just opens the connection between the server and client - also enabling an example where multiple clients are connected to one document. Using the WebSocket protocol reduces potential overhead since information is constantly being sent between client and server - as the only overhead is sent in the initial handshake - operations afterward become a lot smaller.
+Sockets is the desirable web protocol for an OT system, since there is an almost constant communication between a client and server, using long-polling ajax requests becomes cumbersome and inefficient extremely quick. Sockets eliminates the need for continuous requests, and just opens the connection between the server and client - also enabling an example where multiple clients are connected to one document. Using the WebSocket protocol reduces potential overhead since information is constantly being sent between client and server - as the only overhead is sent in the initial handshake - operations afterward become a lot smaller.
 
 In the example of this implementation, Flask-SocketIO(link) is used to satisfy socket requirements on the python server-side and the SocketIO javascript implementation is used to connect to the client over ws://.
+
+
+-----
+
+Project by Dion Misic.
+Contact @ dionmisic.com
